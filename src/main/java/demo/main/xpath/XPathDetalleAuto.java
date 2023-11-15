@@ -24,4 +24,6 @@ public class XPathDetalleAuto {
 		throw new CloneNotSupportedException();
 	}
 
+	public String lblNombreModelo = "//*[@class='row']/h3";
+
 }

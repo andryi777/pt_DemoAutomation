@@ -11,5 +11,5 @@ Feature: Modelos de auto
     Examples: 
       | clasificacion  | marca       | modelo              |
       | Overall Rating | Lamborghini | Diablo              |
-      #| Overall Rating | Pagani      | Zonda               |
-      #| Overall Rating | Alfa Romeo  | Guilia Quadrifoglio |
+      | Overall Rating | Pagani      | Zonda               |
+      | Overall Rating | Alfa Romeo  | Guilia Quadrifoglio |

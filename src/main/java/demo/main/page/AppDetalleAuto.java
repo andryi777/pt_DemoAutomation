@@ -12,9 +12,9 @@ public class AppDetalleAuto extends PageObject {
 // util
 	protected PageObjectUtil pageObjectUtil = PageObjectUtil.getInstancia();
 
-	public Object getNombreModelo() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getNombreModelo() {
+		String modelo = pageObjectUtil.seleniumGetText(getDriver(), xpathDetalleAuto.lblNombreModelo, 0);
+		return modelo;
 	}
 
 }
