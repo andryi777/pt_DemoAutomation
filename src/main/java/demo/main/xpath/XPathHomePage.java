@@ -24,13 +24,9 @@ public class XPathHomePage {
 		throw new CloneNotSupportedException();
 	}
 	
-	public final String lnkCotizaAqui = "//*[@id='btnCotiza']";
-	public final String txtPlaca ="//*[@id='placa']";
-	public final String txtDNI="//div[label[contains(., 'Número de DNI o C.E.')]]/input";
-	public final String txtCelular="//div[label[contains(., 'Celular')]]/input";
-	public final String txtCorreo="//div[label[contains(., 'Correo')]]/input";
-	public final String chkPoliDatosPrsonales="//label[@for='chkpolprotdatos']";
-	public final String chkEnvioComunicComerci="//label[@for='chkpolCom']";
-	public final String btnCotizaAhora="//*[@id='lnkCotizaAqui']";
+	public String imgClasificacion(String nombreClasificacion) {
+		String xpathIMGClasificacion = "//*[@class='card-header text-xs-center' and text()='"+nombreClasificacion+"']/following-sibling::a";
+		return xpathIMGClasificacion;
+	}
 
 }

@@ -19,5 +19,9 @@ public class AppHomepage extends PageObject {
 		getDriver().manage().window().maximize();		
 	}
 	
+	public void selecciono_clasificacion(String nombreClasificacion) {
+		Serenity.takeScreenshot();
+		pageObjectUtil.seleniumClick(getDriver(), xpathHomePage.imgClasificacion(nombreClasificacion), 0);
+	}
 
 }

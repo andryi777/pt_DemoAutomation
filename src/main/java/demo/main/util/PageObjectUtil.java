@@ -250,6 +250,44 @@ public class PageObjectUtil {
 		dropdowntv.selectByVisibleText(contenido);
 		sleep(0.5);
 	}
+	
+	public void seleniumClickinCellTable(WebDriver webDriver, String pathTable, String marca, String modelo, String columna) {
+		int columnIndex = getColumnIndexTable(webDriver, pathTable, columna);
+		System.out.print("columnIndex: "+ columnIndex);
+		int rowIndex = getRowIndexTable(webDriver, pathTable, marca, modelo);
+		
+		System.out.print("rowIndex: "+rowIndex);
+		String cellXPath = pathTable+"/tbody/tr["+rowIndex+"]/td["+columnIndex+"]/a";
+		webDriver.findElement(By.xpath(cellXPath));
+	}
 
+	public int getRowIndexTable(WebDriver webDriver, String pathTable, String marca, String modelo) {
+		List<WebElement> columnHeaders = webDriver.findElements(By.xpath(pathTable+"/thead/tr/th"));
+		List<WebElement> rows = webDriver.findElements(By.xpath(pathTable+"/tbody/tr"));
+		for(int rowIndex=1; rowIndex<rows.size(); rowIndex++) {
+			WebElement row= rows.get(rowIndex);
+			System.out.print("fila: "+ rowIndex);
+			for(int columnIndex=1; columnIndex<columnHeaders.size(); columnIndex++) {
+				List<WebElement> cells = row.findElements(By.xpath("/td["+columnIndex+"]/a"));
+				System.out.print("cells: "+ cells.get(0).getText());
+				if(cells.get(0).getText().equals(marca)
+					//&& cells.get(columnIndex+1).getText().equals(modelo)
+					) {
+					return rowIndex;
+				}
+			}
+		}
+		throw new RuntimeException("La fila con marca " + marca + " no esta en la tabla");
+	}
+	
+	public int getColumnIndexTable(WebDriver webDriver, String pathTable, String column) {
+		List<WebElement> columnHeaders = webDriver.findElements(By.xpath(pathTable+"/thead/tr/th"));
+		for (int columnIndex=0; columnIndex<columnHeaders.size(); columnIndex++) {
+			if(columnHeaders.get(columnIndex).getText().equals(column)) {
+				return columnIndex+1;
+			}
+		}
+		throw new RuntimeException("La columna " + column + " no esta en la tabla");
+	}
 	
 }
